@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # Main Bot Service
+  sara-match-bot:
+    build: .
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    volumes:
+      - ./sara_match.db:/app/sara_match.db
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: PostgreSQL Database
+  # Agar cloud database ishlatmoqchi bo'lsangiz uncomment qiling
+  #
+  # postgres:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_USER: sara_match
+  #     POSTGRES_PASSWORD: your_secure_password
+  #     POSTGRES_DB: sara_match
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: always
+
+  # Optional: pgAdmin (Database Management UI)
+  # postgres admin panel uchun
+  #
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - postgres
+  #   restart: always
+
+# volumes:
+#   postgres_data:
+
+# ============ ISHLATISH ============
+# 
+# Build: docker-compose build
+# Start: docker-compose up -d
+# Stop: docker-compose down
+# Logs: docker-compose logs -f sara-match-bot
+# Restart: docker-compose restart sara-match-bot
+#
+# .env file shu folder-da bo'lishi kerak:
+# BOT_TOKEN=YOUR_TOKEN_HERE
