@@ -9,7 +9,7 @@ import json
 import os
 
 # Bot tokeningizni shu yerga qo'ying
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+BOT_TOKEN = "8711867157:AAFtmUg0OWUaW5uNGMg4MTDVbIv-HN20Rk8"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # ================== DATABASE SETUP ==================
